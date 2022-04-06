@@ -1,0 +1,18 @@
+<section>
+<h2>Ajouter un manga</h2>
+
+<form method="POST" action="/manga/store">
+<label for="name">Nom du manga : </label>
+<input type="text" id="name" name="name">
+<label for="tag">Tag</label>
+<select type="select" id="tag" name="tag">
+<option selected>Choisir la catégorie</option>
+  <option value="anime">Anime</option>
+  <option value="scan">Manga</option>
+</select>
+
+<label>Saisir un commentaire</label>
+<input type="textarea" id="comment">
+<input type="submit" value="valider">
+</form>
+</section>

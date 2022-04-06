@@ -1,0 +1,12 @@
+<section>
+<h2>Ma liste de manga</h2>
+ <ul>
+  <% for (const manga of mangas) { %>
+  <li><%= manga.name %></li>
+  <li><%= manga.tag%></li>
+  <li>Commentaire : <%= manga.comment%></li>
+  <li><%= manga.finish === true ? 'terminer' : ' à regarder' %></li>
+  <li><%= manga.created_at%></li>
+  <%}%>
+  </ul>
+</section>
