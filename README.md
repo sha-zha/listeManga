@@ -10,3 +10,8 @@ Installer les dépendances
 - mongoose 6.2.10
 
 
+## Pour lancer le projet 
+
+- git clone le projet 
+- npm install 
+- `npm run start`
