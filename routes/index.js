@@ -10,5 +10,7 @@ router.get('/', function(req, res, next) {
 router.get('/manga', mangaController.index);
 router.get('/manga/add',mangaController.add);
 router.post('/manga/store', mangaController.store);
+router.get('/manga/:id',mangaController.edit);
+router.post('/manga/:id',mangaController.update);
 
 module.exports = router;

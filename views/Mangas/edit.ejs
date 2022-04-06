@@ -1,0 +1,27 @@
+<section>
+<h2><%= title %></h2>
+
+<form method="POST" action="/manga/<%= manga._id%>">
+<label for="name">Nom du manga : </label>
+<input type="text" id="name" name="name" value="<%= manga.name %>">
+<span>Tag</span>
+
+<%if(manga.tag ==="anime"){%>
+<input type="radio" name="tag" id="tag-anime" checked="true" value="anime">Anime
+<input type="radio" name="tag" id="tag-scan" checked="false" value="scan">Scan
+<%}%>
+
+<%if(manga.tag ==="scan"){%>
+<input type="radio" name="tag" id="tag-anime" checked="false" value="anime">Anime
+<input type="radio" name="tag" id="tag-scan" checked="true" value="scan">Scan
+<%}%>
+<label>Saisir un commentaire</label>
+<input type="textarea" id="comment" name="comment" value="<%= manga.comment%>">
+
+<input type="checkbox" name="finish" id="finish">Terminer
+
+<input type="hidden" name="created_at" value="<%=manga.created_at %>" >
+
+<input type="submit" value="valider">
+</form>
+</section>
