@@ -4,6 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// setup mongodb
+let mongoose = require('mongoose');
+const configDB = require('./config/database.js');
+
+mongoose.connect(configDB.url, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
+}).then(() => {
+  console.log('connection established successfully')
+}).catch(); {
+};
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
