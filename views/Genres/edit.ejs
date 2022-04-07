@@ -1,0 +1,14 @@
+<%- include('../partials/layout.ejs') %>
+<section class="container">
+    <div class="row">
+        <div class="col">
+            <form action="/genre/<%= genre._id %>" method="post">
+                <div class="mb-3">
+                    <label for="genre">Saisir un genre</label>
+                    <input type="text" class="form-control" id="genre" name="name" value="<%= genre.name %>">
+                </div>
+                <input type="submit" class="btn btn-dark">
+            </form>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,23 @@
+<%- include('../partials/layout.ejs') %>
+
+<section class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 gy-5">
+        <div class="col">
+            <a href="/genre/add" class="text-dark">
+                <div class="h-100 card d-flex justify-content-center align-items-center rounded-card">
+                    <i class="bi bi-plus-circle-dotted"></i>
+                    <p>Ajouter un genre</p>
+                </div>
+            </a>
+        </div>
+<%  for (const genre of genres ) { %>
+        <div class="col">
+                <div class="h-100 card d-flex justify-content-center align-items-center rounded-card">
+                    <p><%= genre.name %></p>
+                    <a href="/genre/<%=genre._id%>">Editer</a>
+                    <p>crée le: <%= `${genre.createdAt.getDate()}/${genre.createdAt.getMonth()+1}/${genre.createdAt.getFullYear()}`;  %></p>
+                </div>
+        </div>
+        <%}%>
+    </div>
+</section>

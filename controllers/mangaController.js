@@ -42,7 +42,6 @@ controller.update = async (req,res) => {
     let finish = req.body.finish==='on' ? true :false;
     let now = req.body.created_at;
 
-    console.log(req.body);
     name.trim() === "" || tag.trim() === "" ?
         console.log("to do make flash")
         :
