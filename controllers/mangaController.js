@@ -15,14 +15,13 @@ controller.store = async (req, res) => {
     let name = req.body.name;
     let tag = req.body.tag;
     let comment = req.body.comment;
-    let now = new Date();
     let newManga;
 
     name.trim() === "" || tag.trim() === "" ?
 
         res.redirect('/manga')
         :
-        newManga = await new MangaModel({name: name, tag: tag, finish: false, comment: comment, created_at: now});
+        newManga = await new MangaModel({name: name, tag: tag, finish: false, comment: comment});
         newManga.save();
         res.redirect('/manga');
 };
@@ -40,14 +39,13 @@ controller.update = async (req,res) => {
     let tag = req.body.tag;
     let comment = req.body.comment;
     let finish = req.body.finish==='on' ? true :false;
-    let now = req.body.created_at;
 
     name.trim() === "" || tag.trim() === "" ?
         console.log("to do make flash")
         :
         await MangaModel.findByIdAndUpdate(
             {_id: id},
-            {name: name, tag: tag, finish: finish, comment: comment, created_at: now}
+            {name: name, tag: tag, finish: finish, comment: comment}
         );
 
     res.redirect('/manga');

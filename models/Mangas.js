@@ -18,12 +18,7 @@ const MangaSchema = mongoose.Schema({
       type : String,
       required:false,
         default: null
-    },
-    created_at : {
-        type:Date,
-        default: Date.now,
-        required:false
     }
-});
+},{timestamps:true});
 
 module.exports = mongoose.model('Manga', MangaSchema);
