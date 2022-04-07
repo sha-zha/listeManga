@@ -1,13 +1,32 @@
-<section>
-<h2>Ma liste de manga</h2>
- <ul>
-  <% for (const manga of mangas) { %>
-  <li><%= manga.name %></li>
-  <li><%= manga.tag%></li>
-  <li>Commentaire : <%= manga.comment%></li>
-  <li><%= manga.finish === true ? 'terminer' : ' à regarder' %></li>
-  <li><%= manga.created_at%></li>
-  <li><a href="/manga/<%= manga._id%>"> Editer</a></li>
-    <%}%>
-  </ul>
+<%- include('../partials/layout.ejs') %>
+<section class="container-fluid">
+ <div class="row">
+  <div class="col-12">
+   <h2 class="text-center mb-5">Ma liste de manga</h2>
+  </div>
+ </div>
+ <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-5 gy-5">
+  <div class="col">
+   <a href="/manga/add" class="text-dark">
+    <div class="h-100 card d-flex justify-content-center align-items-center rounded-card">
+    <i class="bi bi-plus-circle-dotted"></i>
+    <p>Ajouter un manga</p>
+   </div></a>
+  </div>
+   <% for (const manga of mangas) { %>
+  <div class="col">
+   <div class="card rounded-card">
+    <ul>
+     <li><%= manga.name %></li>
+     <li><%= manga.tag%></li>
+     <li>Commentaire : <%= manga.comment%></li>
+     <li><%= manga.finish === true ? 'terminer' : ' à regarder' %></li>
+     <li><%= `${manga.created_at.getDate()}/${manga.created_at.getMonth()+1}/${manga.created_at.getFullYear()}`;  %></li>
+     <li><a href="/manga/<%= manga._id%>"> Editer</a></li>
+    </ul>
+   </div>
+   </div>
+   <%}%>
+ </div>
+
 </section>

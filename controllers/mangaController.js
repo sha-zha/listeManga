@@ -19,7 +19,8 @@ controller.store = async (req, res) => {
     let newManga;
 
     name.trim() === "" || tag.trim() === "" ?
-        console.log("to do make flash")
+
+        res.redirect('/manga')
         :
         newManga = await new MangaModel({name: name, tag: tag, finish: false, comment: comment, created_at: now});
         newManga.save();
@@ -29,6 +30,7 @@ controller.store = async (req, res) => {
 controller.edit = async (req,res) => {
     const id = req.params.id;
     const edit = await MangaModel.findOne({_id : id});
+
     res.render('Mangas/edit', {title: 'Edit', manga : edit });
 };
 
