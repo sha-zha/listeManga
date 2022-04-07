@@ -40,7 +40,7 @@ Installer les dépendances
 
 installer mongodb en local 
 - télécharger le logiciel depuis le lien suivant https://www.mongodb.com/try/download/community
-- créer la base de donnée 
+- créer la base de donnée Manuellement sous le nom de `Mangas` 
 
 ## Pour lancer le projet 
 
