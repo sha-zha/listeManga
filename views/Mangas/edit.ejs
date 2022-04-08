@@ -39,6 +39,12 @@
                     <label>Saisir un commentaire</label>
                     <input type="textarea" id="comment" name="comment" value="<%= manga.comment%>" class="form-control">
                 </div>
+                <% for(const genre of genres){%>
+                <div class="mb-3 form-check">
+                    <label for="genre-<%=genre._id%>" class="form-check-label"><%=genre.name%></label>
+                    <input type="checkbox" id="genre-<%=genre._id%>" value="<%= genre._id%>" class="form-check-input" name="genreId">
+                </div>
+                <%}%>
                 <div class="mb-3 form-check">
                     <input type="checkbox" name="finish" id="finish" class="form-check-input">Terminer
                 </div>

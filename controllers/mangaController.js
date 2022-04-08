@@ -67,8 +67,9 @@ controller.store = async (req, res) => {
 controller.edit = async (req,res) => {
     const id = req.params.id;
     const edit = await MangaModel.findOne({_id : id});
+    const data = await GenreModel.find();
 
-    res.render('Mangas/edit', {title: 'Edit', manga : edit });
+    res.render('Mangas/edit', {title: 'Edit', manga : edit, genres: data });
 };
 
 controller.update = async (req,res) => {
