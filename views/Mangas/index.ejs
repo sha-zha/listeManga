@@ -13,20 +13,28 @@
     <p>Ajouter un manga</p>
    </div></a>
   </div>
-   <% for (const manga of mangas) { %>
+  <% mangas.forEach( (data,index) => {
+  if(data.data[0].manga !="undefined"){
+  %>
   <div class="col">
    <div class="card rounded-card">
-    <ul>
-     <li><%= manga.name %></li>
-     <li><%= manga.tag%></li>
-     <li>Commentaire : <%= manga.comment%></li>
-     <li><%= manga.finish === true ? 'terminer' : ' à regarder' %></li>
-     <li><%= `${manga.created_at.getDate()}/${manga.created_at.getMonth()+1}/${manga.created_at.getFullYear()}`;  %></li>
-     <li><a href="/manga/<%= manga._id%>"> Editer</a></li>
+    <ul class="list-group list-group-flush">
+     <li class="list-group-item"><%= data.data[0].manga[0].name %>
+      <span class="badge rounded-pill bg-dark"><%= data.data[0].manga[0].tag %></span>
+     </li>
+     <li class="list-group-item">Commentaire : <%= data.data[0].manga[0].comment %></li>
+     <li class="list-group-item"><%= data.data[0].manga[0].finish == true ? 'terminer' : ' à regarder' %></li>
+     <li class="list-group-item">
+      <% for(const dataGenre of data.data){
+        for(const genre of dataGenre.genre){%>
+     <span class="badge rounded-pill bg-dark"><%= genre.name%></span>
+      <%} }%></li>
+     <li class="list-group-item"><a href="/manga/<%=data._id%>"> Editer</a></li>
     </ul>
    </div>
-   </div>
-   <%}%>
- </div>
+  </div>
 
+  <%} });%>
+
+ </div>
 </section>

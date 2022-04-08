@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const GenreMangaSchema = mongoose.Schema({
-    GenreId: {
+    genreId: {
         type: mongoose.Types.ObjectId,
         required: true,
-        ref: 'Genre'
+        ref: 'Genre',
     },
-    MangaId:{
+    mangaId:{
         type: mongoose.Types.ObjectId,
         required: true,
         ref: 'Manga'
