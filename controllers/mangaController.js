@@ -1,6 +1,7 @@
 const MangaModel = require('../models/Mangas');
 const GenreModel = require('../models/Genres');
 const GenreMangaModel = require('../models/GenreManga');
+const mongoose = require("mongoose");
 let controller = {};
 
 controller.index = async (req, res) => {
@@ -66,7 +67,30 @@ controller.store = async (req, res) => {
 
 controller.edit = async (req,res) => {
     const id = req.params.id;
-    const edit = await MangaModel.findOne({_id : id});
+    const object = mongoose.Types.ObjectId;
+    const edit = await GenreMangaModel
+        .aggregate([
+            {$match: {mangaId: new object(id)}},
+            { $lookup:  {from: 'genres',localField: 'genreId', foreignField: '_id', as: 'genre'} },
+            { $lookup:  {from: 'mangas',localField: 'mangaId', foreignField: '_id', as: 'manga'} },
+            { $group :
+                    {
+                        _id: new object(id),
+                        data: {
+                            $push: {
+                                mangaId: "$manga.id" ,
+                                name:"$manga.name",
+                                tag: "$manga.tag",
+                                finish: "$manga.finish",
+                                comment: "$manga.comment",
+                                genre: "$genre",
+                            }
+                        }
+                    }
+            },
+        ])
+        .exec();
+
     const data = await GenreModel.find();
 
     res.render('Mangas/edit', {title: 'Edit', manga : edit, genres: data });

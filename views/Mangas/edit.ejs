@@ -8,7 +8,7 @@
             <form method="POST" action="/manga/<%= manga._id%>">
                 <div class="mb-3">
                     <label for="name">Nom du manga : </label>
-                    <input type="text" id="name" name="name" value="<%= manga.name %>" class="form-control">
+                    <input type="text" id="name" name="name" value="<%= manga[0].data[0].name[0] %>" class="form-control">
                 </div>
                 <div class="mb-3">
                     <span>Tag</span>
